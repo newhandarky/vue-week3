@@ -7,7 +7,6 @@ let delProductModal = null;
 createApp({
     data() {
         return {
-            //       https://ec-course-api.hexschool.io/v2/api/newhandarky/admin/product
             apiUrl: "https://vue3-course-api.hexschool.io/v2",
             apiPath: "newhandarky",
             products: [],
@@ -43,7 +42,9 @@ createApp({
                 Swal.fire({
                     title: `${err.data.message}`,
                     icon: "error",
-                })
+                }).then(() => {
+                    location = "./login.html"
+                });
             })
         },
 
@@ -55,9 +56,7 @@ createApp({
                 Swal.fire({
                     title: `${err.data.message}`,
                     icon: "error",
-                }).then(() => {
-                    location = "./login.html"
-                });
+                })
             })
         },
         
