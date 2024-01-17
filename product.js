@@ -39,6 +39,11 @@ createApp({
             axios.post(url).then((res) => {
                 // 驗證完畢後取得產品列表
                 this.getData()
+            }).catch((err) => {
+                Swal.fire({
+                    title: `${err.data.message}`,
+                    icon: "error",
+                })
             })
         },
 
@@ -50,8 +55,10 @@ createApp({
                 Swal.fire({
                     title: `${err.data.message}`,
                     icon: "error",
-                })
-            })// 
+                }).then(() => {
+                    location = "./login.html"
+                });
+            })
         },
         
         toggleUpdateModel(str) {
